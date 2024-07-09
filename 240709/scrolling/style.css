@@ -1,0 +1,15 @@
+.container {
+  position: relative;
+  height: 200vh;
+}
+.item {
+  position: absolute;
+}
+.item1,
+.item2 {
+  font-size: 100px;
+  font-weight: bold;
+}
+.item1 {
+  top: 300px;
+}
