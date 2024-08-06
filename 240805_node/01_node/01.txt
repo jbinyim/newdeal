@@ -35,7 +35,13 @@ MongoDB for VS Code
 -> vsCode 확장자
 -> 피그마에 설명참고
 
+EJS language support
+-> ejs확장자
+-> 프리티어같은거
 npm i mongoose dotenv
+-----------------------------------------------------------------
+npm i ejs
+-> view 엔진
 -----------------------------------------------------------------
 - 몽고DB는 자동으로 아이디값을 생성 (sql , mysql...등은 내가 설정?)
 -----------------------------------------------------------------
@@ -45,7 +51,41 @@ npm i mongoose dotenv
 
 1. 스키마: 자료 정의
 2. 모델링
+
+<%= 변수 %>
+<% 자바스크립트 %>
+<%- HTML %>
+
+
+fomr으로 만들어서 보낼때 꼭 method=POST 를 써야한다
+
+컨트롤러 함수 기능 부여
+경로지정
+뷰(add.ejs)
+
+Ajax라는 기법
+
+npm i method-override
+-> 원래 method는 get 과 post만 되는데 이걸 이용하면 put과 delete등을 사용할 수 있다
+
+
+app.use(express.urlencoded({ extended: true }));
+-> 충돌이일어나도 그냥 넘기겠다는 코드
 -----------------------------------------------------------------
 
 
 
+npm i bcrypt
+-> 비밀번호 암호화
+
+const bcrypt = require("bcrypt")
+
+const registerUser = asyncHandler (async(req,res) => {
+  const {id, pw} = req.body
+  if (pw) {
+    const hashedpw = await bcrypt.hash(pw, 10)
+    console.log(hashedpw)
+    const user = await User.create(id, pw: hashedpw)
+    res.status(201).json({message: "register successful", user})
+  }
+})
